@@ -1,7 +1,7 @@
 import countryData from '../templates/country_data.hbs';
 import countrySearch from '../templates/coutry_search.hbs';
 import debounce from 'lodash.debounce';
-import {  error } from '@pnotify/core';
+import {  error } from '@pnotify';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 import { fetchCountries } from './fetchCountries_API';

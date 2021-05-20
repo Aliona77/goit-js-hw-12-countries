@@ -21,12 +21,13 @@
   "devDependencies": {
     "axios": "^0.21.1",
     "gh-pages": "^3.1.0",
-    "lodash.debounce": "^4.0.8",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "pnotify": "^5.2.0",
     "posthtml-include": "^1.6.2",
     "sass": "^1.32.8"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
+  }
 }
