@@ -12,14 +12,12 @@
     />
   </head>
   <body>
-    <input
-      type="text"
-      name="countryname"
-      placeholder="Search country"
-      id="search"
-      autocomplete="off"
-    />
-    <div class="country"></div>
+    <div class="country-card">
+      <h1 class="country-card_tile">Search country</h1>
+      <input type="search" name="query" placeholder="Enter country name" autocomplete="off" />
+
+      <div class="country-card_content js-card"></div>
+    </div>
     <script src="./index.js"></script>
   </body>
 </html>

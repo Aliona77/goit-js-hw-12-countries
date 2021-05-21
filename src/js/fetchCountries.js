@@ -1,41 +1,80 @@
-import countryData from '../templates/country_data.hbs';
-import countrySearch from '../templates/coutry_search.hbs';
+import countryData from '../templates/country-data.hbs';
+import getRefs from './refs.js';
 import debounce from 'lodash.debounce';
-import {  error } from '@pnotify';
-import '@pnotify/core/dist/PNotify.css';
-import '@pnotify/core/dist/BrightTheme.css';
-import { fetchCountries } from './fetchCountries_API';
-import getRefs from './refs';
+import fetchCountriesApi from './fetchCountries-api.js';
+
+import { info, error } from "@pnotify/core";
+import "@pnotify/core/dist/PNotify.css";
+import "@pnotify/core/dist/BrightTheme.css";
+import "@pnotify/confirm/dist/PNotifyConfirm.css";
 
 const refs = getRefs();
 
 let searchQuery = '';
 
-refs.search.addEventListener('input', debounce(onSearchCountry, 500));
+refs.input.addEventListener(
+    'input',
+    debounce(()=> {
+        onInput();
+    }, 500),
+);
+function onInput() {
+    searchQuery = refs.input.value;
 
-function renderNumberCountries(countries) {
+    console.log(searchQuery);
+    if (!searchQuery) {
+        clearCountriesMarkup();
+        return;
+    }
+
+    fetchCountriesApi.fetchCountries(searchQuery)
+        .then(renderNumberOfCountries)
+        .catch(onError)
+}
+
+
+function renderNumberOfCountries(countries) {
     if (countries.length > 10) {
-        return error({text: " Too many matches found. Please enter a more specific query!"})
+        clearCountriesMarkup();
+        toManyMatches();
     }
-    if (countries.length >= 2 && countries.length <= 10) {
-        markupCountry(countries);
-        return
+    else if (countries.length > 1 && countries.length <= 10) {
+      clearCountriesMarkup();
+      renderCountriesMarkup(countryData, countries);
     }
-    markupCountryData(countries);
-}
-function markupCountry(countries) {
-    const markupCountry = countrySearch(countries);
-    refs.country.insertAdjacentHTML('afterbegin', markupCountry);
+    else if (countries.length === 1 ){
+        clearCountriesMarkup();
+        renderCountriesMarkup(countryData, countries[0]);
+    }
+    else {
+        clearCountriesMarkup();
+        noMatches();
+    }
 }
 
-function markupCountryData(countries) {
-    const markupData = countryData(countries);
-    refs.country.insertAdjacentHTML('afterbegin', markupData);
+function renderCountriesMarkup(template, countries) {
+    const markup = template(countries);
+    refs.card.insertAdjacentHTML('beforeend', markup);
 }
-function onSearchCountry() {
-    refs.country.innerHTML = '';
-    searchQuery = refs.search.value;
-    fetchCountries(searchQuery)
-        .then(renderNumberCountries)
-        .catch(error=> console.log(error))
+
+function clearCountriesMarkup() {
+    refs.card.innerHTML = ''; 
+}
+
+function noMatches() {
+    info({
+        text: 'No matches!!!',
+        delay: 1000,
+    });   
+}
+function toManyMatches() {
+    error({
+        text: 'There are a lot of coincidences. Please specify your request!',
+        delay: 3000, 
+    });
+}
+
+function onError(error) {
+    clearCountriesMarkup();
+    console.log(error);
 }

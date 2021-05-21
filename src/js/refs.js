@@ -1,7 +1,7 @@
 export default function getRefs() {
     return {
-        search: document.querySelector('#search'),
-        country: document.querySelector('.country'),
+    card: document.querySelector('.js-card'),
+    input: document.querySelector('input'),
     }
 
 }

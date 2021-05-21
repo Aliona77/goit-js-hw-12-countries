@@ -1,0 +1,15 @@
+<div class="card"> 
+    <h1 class="title">{{name}}</h1>
+    <div class="coutry-card_body">
+        <div class="coutry-description">
+        <h2 class="capital">Capital:{{ capital }}</h2>
+        <h2 class="population">Population:{{ population }}</h2>
+       
+        <ul class="languages">Languages:
+            {{#each languages}}
+            <li class="language-item">{{ name }}</li>
+            {{/each}}
+        </ul>
+        </div>
+    <img src={{flag}} alt={{name}} class="img-card" width="380 ">
+    </div>
