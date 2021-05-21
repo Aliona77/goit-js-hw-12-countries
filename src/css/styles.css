@@ -33,7 +33,21 @@ input {
   text-align: center;
   border: transparent;
 }
+
+.title {
+  margin-bottom: 30px;
+  font-size: 50px;
+}
 .country-card_tile {
   margin-bottom: 40px;
   font-size: 50px;
+}
+.coutry-card_body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.coutry-description {
+  padding: 20px;
+  text-align: left;
 }
