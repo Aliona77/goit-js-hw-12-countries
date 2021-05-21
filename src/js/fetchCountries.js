@@ -78,3 +78,4 @@ function onError(error) {
     clearCountriesMarkup();
     console.log(error);
 }
+
