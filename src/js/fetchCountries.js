@@ -29,10 +29,7 @@ function onFetchError() {
         title: "Error",
         text: 'No matches!!!',
         autoOpen: true,
-        shadow: true,
-        minHeight: '16px',
-        maxTextHeight: null,
-        animateSpeed: 'normal',
+    
         delay: 2000, 
     })
 }
@@ -63,10 +60,7 @@ function checkNumberOfCountries(countries) {
             title: "Error",
             text: 'There are a lot of coincidences. Please specify your request!',
             autoOpen: true,
-            shadow: true,
-            minHeight: '16px',
-            maxTextHeight: null,
-            animateSpeed: 'normal',
+          
             delay: 2000,
         })
     }
