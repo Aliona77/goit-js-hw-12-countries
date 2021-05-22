@@ -1,14 +1,11 @@
-/*import axios from 'axios';
 
-axios.defaults.baseURL = 'https://restcountries.eu/rest/v2/name';
+const BASE_URL = `https://restcountries.eu/rest/v2`;
 
-export const fetchCountries = (searchQuery) => {
-    return axios
-        .get(`/${searchQuery}`)
-        .then(response => response.data);
-};*/
-const BASE_URL = 'https://restcountries.eu/rest/v2/name';
+function fetchCountries(country) {
+    const url = `${BASE_URL}/name/${country}`;
+    return fetch(url).then(response => {
+        return response.json();
+    });
+}
 
-const fetchCountries = countryName => fetch(`${BASE_URL}/${countryName}`).then(response => response.json());
-
-export default {fetchCountries };
+export default {fetchCountries};

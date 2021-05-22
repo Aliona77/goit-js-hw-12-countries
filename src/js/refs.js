@@ -1,7 +1,7 @@
 export default function getRefs() {
     return {
-    card: document.querySelector('.js-card'),
-    input: document.querySelector('input'),
-    }
+        card: document.querySelector('.card'),
+        inputForm: document.querySelector('.input-form'),
+    };
 
 }

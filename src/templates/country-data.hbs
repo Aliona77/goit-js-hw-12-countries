@@ -1,15 +1,24 @@
-<div class="card"> 
+<div class="card-container"> 
     <h1 class="title">{{name}}</h1>
-    <div class="coutry-card_body">
+    <div class="card_body">
         <div class="coutry-description">
-        <h2 class="capital">Capital:{{ capital }}</h2>
-        <h2 class="population">Population:{{ population }}</h2>
-       
-        <ul class="languages">Languages:
+        <h2 class="capital">
+            <span> Capital:</span>{{ capital }}
+            </h2>
+        <h2 class="population">
+            <span> Population:</span>{{ population }}
+            </h2>
+       <h2 class="languages">
+        <span> Languages:</span>
+       </h2>
+        <ul class="languages-list">
             {{#each languages}}
-            <li class="language-item">{{ name }}</li>
+            <li class="language-list__item">
+                {{ name }}
+                </li>
             {{/each}}
         </ul>
         </div>
-    <img src={{flag}} alt={{name}} class="img-card" width="400">
+    <img src={{flag}} alt={{name}} class="img-card" width="400px"/>
     </div>
+</div>
