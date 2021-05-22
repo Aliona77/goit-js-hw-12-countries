@@ -29,7 +29,6 @@ function onFetchError() {
         title: "Error",
         text: 'No matches!!!',
         autoOpen: true,
-    
         delay: 2000, 
     })
 }
@@ -60,7 +59,6 @@ function checkNumberOfCountries(countries) {
             title: "Error",
             text: 'There are a lot of coincidences. Please specify your request!',
             autoOpen: true,
-          
             delay: 2000,
         })
     }
