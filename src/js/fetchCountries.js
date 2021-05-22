@@ -38,7 +38,7 @@ function renderNumberOfCountries(countries) {
         clearCountriesMarkup();
         toManyMatches();
     }
-    else if (countries.length > 1 && countries.length <= 10) {
+    else if (countries.length <= 10 && countries.length > 1 ) {
       clearCountriesMarkup();
       renderCountriesMarkup(countryData, countries);
     }
